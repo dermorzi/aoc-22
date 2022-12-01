@@ -1,0 +1,16 @@
+{
+  "name": "aoc",
+  "version": "0.1.0",
+  "description": "Advent of code 2022",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
