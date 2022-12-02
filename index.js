@@ -1,6 +1,3 @@
-// Copyright 2022 Rene Pohland.
-// SPDX-License-Identifier: Apache-2.0
-
 const { readdir } = require('node:fs/promises')
 const path = require('path');
 
