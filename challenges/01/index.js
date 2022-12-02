@@ -3,7 +3,7 @@
 const { readFile } = require('node:fs/promises');
 const path = require('path');
 
-module.exports.run = async () => {
+const run = async () => {
     try {
         const input = await readFile(path.join(__dirname, '/input.txt'), { encoding: 'utf8' });
         const elves = input.split('\n\n')
@@ -20,3 +20,5 @@ module.exports.run = async () => {
         console.error(err);
     }
 }
+
+run();

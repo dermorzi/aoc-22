@@ -5,7 +5,5 @@ const day = process.argv[2];
 
 if (!parseInt(day)) throw new Error(`${day} is not valid for a day!`);
 
-const dayPath = path.resolve(__dirname, day);
-const code = require(dayPath);
-
-code.run();
+const dayPath = path.resolve(__dirname, 'challenges', day);
+require(dayPath);
