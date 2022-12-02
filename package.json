@@ -4,8 +4,10 @@
   "description": "Advent of code 2022",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon ."
+    "challenge": "node challenge.js",
+    "challenge:dev": "nodemon challenge.js",
+    "dev": "nodemon .",
+    "start": "node ."
   },
   "keywords": [],
   "author": "",

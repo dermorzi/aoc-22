@@ -38,7 +38,7 @@ function getRealChoice(choice, names) {
 }
 
 // solution part one
-(async function partOne() {
+async function partOne() {
     const input = await loadInput();
     const opponentNames = { A: 'rock', B: 'paper', C: 'scissor' };
     const myNames = { X: 'rock', Y: 'paper', Z: 'scissor' };
@@ -53,11 +53,11 @@ function getRealChoice(choice, names) {
         score += points;
     }
 
-    console.log('Part 1:', score, 'points');
-})();
+    return score + ' points';
+}
 
 // solution part two
-(async function partTwo() {
+async function partTwo() {
     const input = await loadInput();
     const names = { A: 'rock', B: 'paper', C: 'scissor' };
     const results = { X: 'loss', Y: 'draw', Z: 'win' };
@@ -79,5 +79,7 @@ function getRealChoice(choice, names) {
         score += points;
     }
 
-    console.log('Part 2:', score, 'points');
-})();
+    return score + ' points';
+}
+
+module.exports = [partOne, partTwo];

@@ -19,15 +19,17 @@ function prepareAnSortInput(input) {
         .sort((a, b) => b - a);;
 }
 
-(async function partOne() {
+async function partOne() {
     const input = await getInput().then(prepareAnSortInput);
     const result = input[0];
 
-    console.log('Part 1:', result, 'calories');
-})();
+    return result + ' calories';
+}
 
-(async function partTwo() {
+async function partTwo() {
     const input = await getInput().then(prepareAnSortInput);
     const result = input.slice(0, 3).reduce((acc, cur) => acc + cur, 0);
-    console.log('Part 2:', result, 'calories');
-})();
+    return result + ' calories';
+}
+
+module.exports = [partOne, partTwo];
