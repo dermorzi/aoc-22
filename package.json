@@ -5,14 +5,9 @@
   "main": "index.js",
   "scripts": {
     "challenge": "node challenge.js",
-    "challenge:dev": "nodemon challenge.js",
-    "dev": "nodemon .",
     "start": "node ."
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "nodemon": "^2.0.20"
-  }
+  "license": "ISC"
 }
