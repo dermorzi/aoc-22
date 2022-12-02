@@ -3,22 +3,31 @@
 const { readFile } = require('node:fs/promises');
 const path = require('path');
 
-const run = async () => {
+async function getInput() {
     try {
         const input = await readFile(path.join(__dirname, '/input.txt'), { encoding: 'utf8' });
-        const elves = input.split('\n\n')
-            .map(elve => (elve.split('\n')))
-            .map(elve => elve.reduce((a, c) => a + parseInt(c), 0))
-            .sort((a, b) => b - a);
-
-        const result1 = elves[0];
-        console.log(result1);
-
-        const result2 = elves.slice(0, 3).reduce((acc, cur) => acc + cur, 0);
-        console.log(result2);
+        return input.split('\n\n')
+            .map(elve => (elve.split('\n').map(v => parseInt(v))));
     } catch (err) {
         console.error(err);
     }
 }
 
-run();
+function prepareAnSortInput(input) {
+    return input
+        .map(cur => cur.reduce((acc, cur) => acc + cur, 0))
+        .sort((a, b) => b - a);;
+}
+
+(async function partOne() {
+    const input = await getInput().then(prepareAnSortInput);
+    const result = input[0];
+
+    console.log('Part 1:', result, 'calories');
+})();
+
+(async function partTwo() {
+    const input = await getInput().then(prepareAnSortInput);
+    const result = input.slice(0, 3).reduce((acc, cur) => acc + cur, 0);
+    console.log('Part 2:', result, 'calories');
+})();
