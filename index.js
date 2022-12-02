@@ -19,7 +19,7 @@ async function runParts(parts, results = []) {
 
 async function runChallenges(names) {
   if (names.length <= 0) return;
-
+  console.log('---');
   const current = names.shift();
 
   try {
@@ -27,7 +27,6 @@ async function runChallenges(names) {
     const parts = require('./challenges/' + current);
     const results = await runParts(parts);
     results.forEach((entry, index) => console.log(`Part ${index + 1}: ${entry}`));
-    console.log('\n');
     return runChallenges(names);
   } catch (error) {
     console.error(error);
@@ -38,6 +37,7 @@ async function runChallenges(names) {
   try {
     const entries = await readdir(path.resolve(__dirname, 'challenges'), { withFileTypes: true });
     const dirs = entries.filter(e => e.isDirectory()).map(e => e.name);
+    console.log(`Running all ${dirs.length} challenges!`);
     await runChallenges(dirs);
   } catch (error) {
     console.error(error);
