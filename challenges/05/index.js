@@ -1,6 +1,7 @@
 const path = require('path');
 const { readFile } = require('node:fs/promises');
 
+// input loading
 async function loadInput() {
   try {
     const inputPath = path.resolve(__dirname, 'input.txt');
@@ -11,6 +12,7 @@ async function loadInput() {
   }
 }
 
+// data preparing
 function getStacks(input) {
   const stacks = {};
   const data = input.split('\n');
@@ -75,6 +77,7 @@ async function prepareData() {
   }
 }
 
+// movement variants
 function performSingleMoves(movement, stacks) {
   const { move, from, to } = movement;
 
@@ -84,6 +87,14 @@ function performSingleMoves(movement, stacks) {
   }
 }
 
+function performMultiMoves(movement, stacks) {
+  const { move, from, to } = movement;
+  const stackSize = stacks[from].length;
+  const subStack = stacks[from].splice(stackSize - move);
+  stacks[to] = [...stacks[to], ...subStack];
+}
+
+// solutions
 async function partOne() {
   const [stacks, moves] = await prepareData();
   let topCrates = '';
@@ -95,13 +106,6 @@ async function partOne() {
   }
 
   return topCrates;
-}
-
-function performMultiMoves(movement, stacks) {
-  const { move, from, to } = movement;
-  const stackSize = stacks[from].length;
-  const subStack = stacks[from].splice(stackSize - move);
-  stacks[to] = [...stacks[to], ...subStack];
 }
 
 async function partTwo() {
