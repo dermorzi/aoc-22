@@ -4,10 +4,11 @@
   "description": "Advent of code 2022",
   "main": "index.js",
   "scripts": {
-    "challenge": "node challenge.js",
+    "challenge:create": "node scripts/create-challenge.js",
+    "challenge": "node scripts/run-challenge.js",
     "start": "node ."
   },
-  "keywords": [],
+  "keywords": ["aoc22", "node", "js"],
   "author": "",
   "license": "MIT"
 }

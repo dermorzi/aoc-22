@@ -18,7 +18,7 @@ async function runParts(parts, results = []) {
 
   try {
     console.log('Day ', parseInt(day));
-    const parts = await require(path.resolve(__dirname, 'challenges', day));
+    const parts = await require(path.resolve(__dirname, '..', 'challenges', day));
     const results = await runParts(parts);
     results.forEach((entry, index) => console.log(`Part ${index + 1}: ${entry}`));
     return;

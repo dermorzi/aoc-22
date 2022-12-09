@@ -11,6 +11,15 @@ npm start
 For the results of a specific day run this command:
 
 ```bash
-# in this case the challenge of day 1
+# in this case run the challenge of day 1
 npm run challenge 01
 ```
+
+For creating a new challenge solution run this command:
+
+```bash
+# in this case it creates base structure for the challenge of day 9
+npm run challenge:create 09
+```
+
+It creates a subfolder for the challenge in the `challenges/` directory, a `index.js` file and an `input.txt` file.
