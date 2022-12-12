@@ -1,5 +1,5 @@
 const path = require('path');
-const { readFile } = require('node:fs/promises');
+const { readFileSync } = require('node:fs');
 const { Rope } = require('./rope.js');
 
 const SAMPLE_1 = [
@@ -24,12 +24,12 @@ const SAMPLE_2 = [
     ['U', 20]
 ];
 
-async function loadInput() {
+function loadInput() {
     try {
-        const input = await readFile(path.resolve(__dirname, 'input.txt'), { encoding: 'utf8' });
+        const input = readFileSync(path.resolve(__dirname, 'input.txt'), { encoding: 'utf8' });
         const lines = input.split('\n');
-        const data = lines.map(l => {
-            const [direction, steps] = l.split(' ');
+        const data = lines.map(line => {
+            const [direction, steps] = line.split(' ');
             return [direction, parseInt(steps)];
         });
 
@@ -39,8 +39,7 @@ async function loadInput() {
     }
 }
 
-async function simulate(length) {
-    const moves = await loadInput();
+function simulate(length, moves) {
     const rope = new Rope(length + 1);
 
     for (let move of moves) {
@@ -51,7 +50,8 @@ async function simulate(length) {
     return new Set(last.history).size;
 }
 
-const partOne = async () => await simulate(1);
-const partTwo = async () => await simulate(9);
+const moves = loadInput();
+const partOne = () => simulate(1, moves);
+const partTwo = () => simulate(9, moves);
 
 module.exports = [partOne, partTwo];
