@@ -8,9 +8,14 @@ class Knot {
         const diffY = knot.y - this.y;
 
         if (Math.abs(diffX) > 1 || Math.abs(diffY) > 1) {
-            if (this.x === knot.x) this.y += (diffY < 0) ? -1 : 1;
-            else if (this.y === knot.y) this.x += (diffX < 0) ? -1 : 1;
-            else this.x += (diffX < 0) ? -1 : 1, this.y += (diffY < 0) ? -1 : 1;
+            if (this.x === knot.x) {
+                this.y += (diffY < 0) ? -1 : 1;
+            } else if (this.y === knot.y) {
+                this.x += (diffX < 0) ? -1 : 1;
+            } else {
+                this.x += (diffX < 0) ? -1 : 1;
+                this.y += (diffY < 0) ? -1 : 1;
+            }
         }
 
         this.history.push(`${this.x}:${this.y}`);
