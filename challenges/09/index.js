@@ -1,8 +1,8 @@
 const path = require('path');
 const { readFile } = require('node:fs/promises');
-const { Head } = require('./head.js');
+const { Rope } = require('./rope.js');
 
-const SAMPLE = [
+const SAMPLE_1 = [
     ['R', 4],
     ['U', 4],
     ['L', 3],
@@ -11,6 +11,17 @@ const SAMPLE = [
     ['D', 1],
     ['L', 5],
     ['R', 2],
+];
+
+const SAMPLE_2 = [
+    ['R', 5],
+    ['U', 8],
+    ['L', 8],
+    ['D', 3],
+    ['R', 17],
+    ['D', 10],
+    ['L', 25],
+    ['U', 20]
 ];
 
 async function loadInput() {
@@ -28,21 +39,19 @@ async function loadInput() {
     }
 }
 
-async function partOne() {
+async function simulate(length) {
     const moves = await loadInput();
-    const head = new Head();
+    const rope = new Rope(length + 1);
 
     for (let move of moves) {
-        head.move(...move);
+        rope.move(...move);
     }
 
-    return head.visitedByTail.size;
+    const last = rope.knots[rope.length - 1];
+    return new Set(last.history).size;
 }
 
-async function partTwo() {
-    const moves = await loadInput();
-
-    return null;
-}
+const partOne = async () => await simulate(1);
+const partTwo = async () => await simulate(9);
 
 module.exports = [partOne, partTwo];
