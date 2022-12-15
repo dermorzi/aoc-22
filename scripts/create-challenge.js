@@ -11,6 +11,7 @@ async function createChallenge(base_path) {
         await mkdir(base_path);
         await writeFile(path.resolve(base_path, 'index.js'), '', { encoding: 'utf8' });
         await writeFile(path.resolve(base_path, 'input.txt'), '', { encoding: 'utf8' });
+        await writeFile(path.resolve(base_path, 'sample.txt'), '', { encoding: 'utf8' });
     } catch (error) {
         console.error(error);
     }
